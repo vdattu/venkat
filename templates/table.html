@@ -1,0 +1,36 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="table text-center mt-4 ml-4">
+            <table border="1px" cellpadding="20px" cellspacing="0px">
+                <tr>
+                         <th>Date</th>
+                         <th>ID</th>
+                         <th>Name</th>
+                         <th>Check In</th>
+                         <th>Check Out</th>
+                         <th>Per day pay</th>
+                </tr>
+                {% for i in data %}
+                <tr>
+                        <td>{{i[0]}}</td>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        {% if i[3]==None %}
+                            <td><a href="{{url_for('checkinupdate',id1=i[1],date=i[0])}}">check in</a></td>
+                        {% else %}
+                            <td>{{i[3]}}</td>
+                        {% endif %}
+                        {% if i[4]==None %}
+                            <td><a href="{{url_for('checkoutupdate',id1=i[1],date=i[0])}}">check out</a></td>
+                        {% else %}
+                            <td>{{i[4]}}</td>
+                        {% endif %}
+                        <td>{{i[5]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>
